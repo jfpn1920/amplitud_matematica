@@ -1,0 +1,1 @@
+# amplitud_matematica
