@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>amplitud matematica</title>
+    <link rel="stylesheet" href="amplitud_matematica.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <script src="amplitud_matematica.js" defer></script>
+</head>
+<body>
+    <!---------------------------------------->
+    <!--|estructuracion_amplitud_matematica|-->
+    <!---------------------------------------->
+    <main class="calculadora">
+        <!-- Encabezado con el título y la explicación -->
+        <header>
+            <h1>Amplitud Matemática</h1>
+            <p class="subtitulo">Escribe dos valores y calcula la diferencia que hay entre ellos.</p>
+        </header>
+        <!-- Zona de entrada: dos campos numéricos.
+        type="number" solo deja escribir números; step="any" permite decimales. -->
+        <section class="entrada">
+            <!-- Valor A: se guarda en localStorage cada vez que se escribe -->
+            <div class="campo">
+                <label for="valor-a">Valor A</label>
+                <input id="valor-a" type="number" step="any" placeholder="Ej: 12">
+            </div>
+            <!-- Valor B: se guarda en localStorage cada vez que se escribe -->
+            <div class="campo">
+                <label for="valor-b">Valor B</label>
+                <input id="valor-b" type="number" step="any" placeholder="Ej: 30">
+            </div>
+        </section>
+        <!-- Mensaje de error si falta algún valor -->
+        <p id="error" class="error oculto">Escribe los dos valores para poder calcular.</p>
+        <!-- Botones de acción -->
+        <div class="acciones">
+            <!-- Calcula y muestra los resultados -->
+            <button id="btn-calcular" class="boton">Calcular</button>
+            <!-- Cambia el valor A por el valor B -->
+            <button id="btn-intercambiar" class="boton secundario">Intercambiar</button>
+            <!-- Borra los campos y los resultados -->
+            <button id="btn-limpiar" class="boton-texto">Limpiar</button>
+        </div>
+        <!-- Resultados: están ocultos hasta que se calcula -->
+        <section id="resultados" class="resultados oculto">
+            <h2>Resultados</h2>
+            <!-- Cuatro tarjetas con los datos calculados.
+            JavaScript escribe cada resultado dentro de su <dd>. -->
+            <dl class="tarjetas">
+                <div><dt>Diferencia (B − A)</dt><dd id="r-diferencia"></dd></div>
+                <div class="destacada"><dt>Amplitud (sin signo)</dt><dd id="r-amplitud"></dd></div>
+                <div><dt>Variación respecto a A</dt><dd id="r-porcentaje"></dd></div>
+                <div><dt>Punto medio</dt><dd id="r-medio"></dd></div>
+            </dl>
+            <!-- Recta numérica: muestra dónde están A, B y el cero -->
+            <div class="recta" aria-hidden="true">
+                <!-- Línea de fondo (la escala llega desde el menor valor hasta el mayor) -->
+                <div class="pista"></div>
+                <!-- Tramo naranja entre A y B (su tamaño lo calcula JavaScript) -->
+                <div id="recta-tramo" class="tramo"></div>
+                <!-- Marca del cero -->
+                <span id="marca-cero" class="marca cero">0</span>
+                <!-- Marcas de los valores A y B -->
+                <span id="marca-a" class="marca">A</span>
+                <span id="marca-b" class="marca">B</span>
+            </div>
+        </section>
+        <!-- Historial de los últimos cálculos -->
+        <section>
+            <h2>Últimos cálculos</h2>
+            <!-- La lista se llena con JavaScript y se conserva en localStorage -->
+            <ol id="historial" class="historial"></ol>
+            <!-- Borra todo el historial -->
+            <button id="btn-borrar" class="boton-texto">Borrar historial</button>
+        </section>
+    </main>
+    <!-- Aviso por si el navegador tiene JavaScript desactivado -->
+    <noscript>Activa JavaScript para usar la calculadora.</noscript>
+</body>
+</html>
